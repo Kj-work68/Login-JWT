@@ -75,8 +75,7 @@ app.post("/login", jsonParser, function (req, res, next) {
 app.post("/authen", jsonParser, function (req, res, next) {
   try{
   const token = req.headers.authorization.split(' ')[1]
-    var decoded = jwt.verify(token, secret, {algorithms: 'HS512'});
-    console.log('HS512 Token:', tokenHS512);
+    var decoded = jwt.verify(token, secret);
     res.json({status: 'ok', decoded})
   }catch(err){
     res.json({status: 'Error', message: err.message})
